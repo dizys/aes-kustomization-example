@@ -4,7 +4,7 @@ Kubernetes kustomization example for setting up ambassador gateway (AES), basic 
 
 ## Getting started
 
-All the Kubernetes resources are described in this repository and managed with a single Kustomization entry `kustromization.yaml`.
+All the Kubernetes resources are described in this repository and managed with a single Kustomization entry `kustomization.yaml`.
 
 ### Apply kustomization
 
