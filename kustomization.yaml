@@ -2,8 +2,8 @@ resources:
   - ambassador/aes-crds.yaml
   - ambassador/aes.yaml
   - ambassador/config.yaml
-  - resources/qotm.yaml
-  - resources/example-auth.yaml
+  - services/qotm.yaml
+  - services/example-auth.yaml
   - mappings/qotm.yaml
   - filters/authentication.yaml
   - filter-policies/authentication.yaml
