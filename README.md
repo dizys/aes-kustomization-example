@@ -14,13 +14,13 @@ $ kubectl apply -k ./
 
 ### Check out pods
 
-Under all namespaces
+Under all namespaces:
 
 ```bash
 $ kubectl get pods --all-namespaces
 ```
 
-or under `ambassador` namespace
+or under `ambassador` namespace:
 
 ```bash
 $ kubectl get pods --namespace ambassador
@@ -39,6 +39,8 @@ When using [minikube](https://minikube.sigs.k8s.io/docs/start/), use the followi
 ```bash
 $ minikube tunnel
 ```
+
+Then visit http://127.0.0.1/backend/get-quote/
 
 ## License
 
