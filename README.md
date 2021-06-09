@@ -2,7 +2,9 @@
 
 Kubernetes kustomization example for setting up ambassador basic auth and more...
 
-## Getting-started
+## Getting started
+
+All the Kubernetes resources are described in this repository and managed with a single Kustomization entry `kustromization.yaml`.
 
 ### Apply kustomization
 
@@ -30,9 +32,9 @@ $ kubectl get pods --namespace ambassador
 $ kubectl delete -k ./
 ```
 
-### Tunnel when using `minikube`
+### Tunnel when using minikube
 
-When using [minikube](https://minikube.sigs.k8s.io/docs/start/), use the following command to tunnel the 80 and 443 ports to make gateway accessible from host:
+When using [minikube](https://minikube.sigs.k8s.io/docs/start/), use the following command to tunnel 80 and 443 ports in order to make gateway accessible from host:
 
 ```bash
 $ minikube tunnel
