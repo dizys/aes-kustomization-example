@@ -4,6 +4,6 @@ resources:
   - ambassador/config.yaml
   - resources/qotm.yaml
   - resources/example-auth.yaml
-  - mapping/qotm.yaml
+  - mappings/qotm.yaml
   - filters/authentication.yaml
   - filter-policies/authentication.yaml
