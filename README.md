@@ -1,6 +1,6 @@
 # ambassador-kustomization-example
 
-Kubernetes kustomization example for setting up ambassador gateway (AES), basic auth and more...
+Kubernetes kustomization example for setting up ambassador gateway ([AES](https://www.getambassador.io/docs/edge-stack)), basic auth and more...
 
 ## Getting started
 
