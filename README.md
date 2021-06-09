@@ -6,13 +6,13 @@ Kubernetes kustomization example for setting up ambassador gateway ([AES](https:
 
 All the Kubernetes resources are described in this repository and managed with a single Kustomization entry `kustomization.yaml`.
 
-### Apply kustomization
+**1. Apply kustomization**
 
 ```bash
 $ kubectl apply -k ./
 ```
 
-### Check out pods
+**2. Check out pods**
 
 Under all namespaces:
 
@@ -26,7 +26,7 @@ or under `ambassador` namespace:
 $ kubectl get pods --namespace ambassador
 ```
 
-### Delete deployments
+**3. Delete deployments**
 
 ```bash
 $ kubectl delete -k ./
