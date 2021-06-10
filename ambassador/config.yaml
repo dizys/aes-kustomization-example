@@ -8,7 +8,23 @@ spec:
     # Envoy Lua docs: https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/lua_filter
     lua_scripts: |
       function envoy_on_request(request_handle)
+        local headers, body = request_handle:httpCall(
+          "cluster_bff_mock_ambassador",
+          {
+            [":method"] = "GET",
+            [":path"] = "/bff",
+            [":authority"] = "bff-mock"
+          },
+          "",
+          5000)
 
+        request_handle:respond(
+          {
+            [":status"] = 200,
+            ["added_header"] = "header!!!!"
+          },
+          body
+        )
       end
       function envoy_on_response(response_handle)
         response_handle:headers():add("Lua-Scripts-Enabled", "Processed")
