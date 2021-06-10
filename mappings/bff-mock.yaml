@@ -1,0 +1,9 @@
+---
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: bff-mock
+  namespace: ambassador
+spec:
+  prefix: /bff-mock/
+  service: bff-mock
