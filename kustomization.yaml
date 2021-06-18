@@ -5,7 +5,7 @@ resources:
   - services/qotm.yaml
   - services/example-auth.yaml
   - services/bff-mock.yaml
+  - services/domain-service-mock.yaml
   - mappings/qotm.yaml
-  - mappings/bff-mock.yaml
   - filters/authentication.yaml
   - filter-policies/authentication.yaml
