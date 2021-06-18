@@ -1,4 +1,4 @@
-# ambassador-kustomization-example
+# aes-kustomization-example
 
 Kubernetes kustomization example for setting up Ambassador Edge Stack ([AES](https://www.getambassador.io/docs/edge-stack)), basic auth and more...
 
