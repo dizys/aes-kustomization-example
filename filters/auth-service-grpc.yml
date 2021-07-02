@@ -1,0 +1,15 @@
+---
+apiVersion: getambassador.io/v2
+kind: Filter
+metadata:
+  name: auth-service-grpc
+  namespace: ambassador
+spec:
+  External:
+    auth_service: "auth-service-grpc:3000"
+    tls: false
+    proto: grpc
+    protocol_version: v3
+    timeout_ms: 5000
+    status_on_error:
+      code: 403

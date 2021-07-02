@@ -3,6 +3,8 @@ resources:
   - ambassador/aes.yml
   - ambassador/config.yml
   - services/auth-service-http.yml
+  - services/auth-service-grpc.yml
   - services/quote.yml
   - filters/auth-service-http.yml
+  - filters/auth-service-grpc.yml
   - filters/filter-policy.yml

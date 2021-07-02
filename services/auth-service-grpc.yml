@@ -1,0 +1,71 @@
+---
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: auth-service-grpc
+  namespace: ambassador
+spec:
+  prefix: /auth-service-grpc/
+  service: "auth-service-grpc:3000"
+  bypass_auth: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service-grpc
+  namespace: ambassador
+spec:
+  type: ClusterIP
+  selector:
+    app: auth-service-grpc
+  ports:
+    - name: http
+      targetPort: 3000
+      port: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service-grpc
+  namespace: ambassador
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service-grpc
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: auth-service-grpc
+    spec:
+      containers:
+        - name: auth-service-grpc
+          image: docker.io/dizy/ambassador-test-auth-service-grpc:latest
+          ports:
+            - name: http
+              containerPort: 3000
+          volumeMounts:
+            - name: auth-service-grpc-volume
+              mountPath: "/etc/mock"
+              readOnly: true
+      volumes:
+        - name: auth-service-grpc-volume
+          configMap:
+            name: auth-service-grpc-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-service-grpc-config
+  namespace: ambassador
+data:
+  auth-service-grpc.json: |
+    {
+      "port": 3000,
+      "request_logging": true,
+      "max_concurrent_streams": 400,
+      "jwt_rsa_public_key": "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAM40VspKcLBbf1zJZYVfTDZW+CSo4ur6\nPXsM4Qm6ZqbyVuZFu2PnCkPQ8Gi5GTWahgaNEkDtpssgazAjNVViiwUCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+      "jwt_rsa_private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIBOgIBAAJBAM40VspKcLBbf1zJZYVfTDZW+CSo4ur6PXsM4Qm6ZqbyVuZFu2Pn\nCkPQ8Gi5GTWahgaNEkDtpssgazAjNVViiwUCAwEAAQJBAMVekYgU0mHrYi/k0Vhk\ni+UjP2aPhItXNEu4Wxndoe2+JYUKymoF9Vr5zt/Gko7h/e7bejmy5VToxV8FC1NA\nL2ECIQDx+N7qjcCN7JnJR1z+oAhm0V5Xe8cF5yXWvMoY/Pq5PQIhANooowJkuF6N\nqw4hqwnAjeDcuWMLEBSgMTUnp7wZzeVpAiAhKbCziNX5HZI+Kc+u/hPos40whEBU\nqMdg1OMF5bYfKQIgLlfnmQCQcfWiWtQoI2A2Q4hgEXwuJFOLYIFWDo1kwdECIDB0\nXasjX/ZJNYKGikSodJWhYMekSYPVx15XRtHgVKdg\n-----END RSA PRIVATE KEY-----\n"
+    }

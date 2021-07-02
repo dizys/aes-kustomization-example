@@ -437,6 +437,8 @@ spec:
               value: https://ambassador.ambassador.svc.cluster.local
             - name: POLL_EVERY_SECS
               value: "60"
+            - name: AMBASSADOR_ENVOY_API_VERSION
+              value: "V3"
           securityContext:
             allowPrivilegeEscalation: false
           livenessProbe:

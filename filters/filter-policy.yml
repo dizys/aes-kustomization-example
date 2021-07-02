@@ -9,4 +9,4 @@ spec:
     - host: "*"
       path: "/quote/"
       filters:
-        - name: auth-service-http
+        - name: auth-service-grpc
