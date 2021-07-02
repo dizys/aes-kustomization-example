@@ -1,0 +1,8 @@
+resources:
+  - ambassador/aes-crds.yml
+  - ambassador/aes.yml
+  - ambassador/config.yml
+  - services/auth-service-http.yml
+  - services/quote.yml
+  - filters/auth-service-http.yml
+  - filters/filter-policy.yml

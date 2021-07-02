@@ -2,10 +2,11 @@
 apiVersion: getambassador.io/v2
 kind: FilterPolicy
 metadata:
-  name: authentication
+  name: filter-policy
+  namespace: ambassador
 spec:
   rules:
     - host: "*"
-      path: /backend/get-quote/
+      path: "/quote/"
       filters:
-        - name: authentication
+        - name: auth-service-http

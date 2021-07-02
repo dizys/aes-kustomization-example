@@ -1,0 +1,12 @@
+apiVersion: getambassador.io/v2
+kind: Module
+metadata:
+  name: ambassador
+  namespace: ambassador
+spec:
+  # Ambassador config module: https://www.getambassador.io/docs/edge-stack/latest/topics/running/ambassador/#the-module-resource
+  config:
+    # Envoy Lua docs: https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/lua_filter
+    lua_scripts: |
+      function envoy_on_response(handle)
+      end

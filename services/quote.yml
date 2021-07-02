@@ -1,4 +1,13 @@
 ---
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: quote
+  namespace: ambassador
+spec:
+  prefix: /quote/
+  service: quote
+---
 apiVersion: v1
 kind: Service
 metadata:

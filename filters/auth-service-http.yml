@@ -1,0 +1,22 @@
+---
+apiVersion: getambassador.io/v2
+kind: Filter
+metadata:
+  name: auth-service-http
+  namespace: ambassador
+spec:
+  External:
+    auth_service: "auth-service-http:3000"
+    tls: false
+    proto: http
+    timeout_ms: 5000
+    status_on_error:
+      code: 403
+    failure_mode_allow: false
+    # proto: http only
+    allowed_request_headers:
+      - "Authorization"
+      - "x-passport"
+    allowed_authorization_headers:
+      - "Authorization"
+      - "x-passport"
